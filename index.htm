@@ -1,4 +1,157 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Madrids Historia</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
 
+        header {
+            background-color: #003366;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
 
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
 
-jjjjjj
+        .summary {
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+            line-height: 1.6;
+            background-color: white;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        .timeline {
+            max-width: 900px;
+            margin: 40px auto;
+            position: relative;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: #003366;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+
+        .event {
+            padding: 20px;
+            position: relative;
+            background-color: white;
+            border-radius: 10px;
+            width: 45%;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        .event-left {
+            left: 0;
+        }
+
+        .event-right {
+            left: 55%;
+        }
+
+        .event::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #003366;
+            border-radius: 50%;
+            top: 20px;
+            z-index: 1;
+        }
+
+        .event-left::after {
+            right: -10px;
+        }
+
+        .event-right::after {
+            left: -10px;
+        }
+
+        .event h3 {
+            margin-top: 0;
+            color: #003366;
+        }
+
+        @media screen and (max-width: 768px) {
+            .event {
+                width: 90%;
+                left: 0 !important;
+            }
+
+            .timeline::after {
+                left: 20px;
+            }
+
+            .event-left, .event-right {
+                left: 40px;
+            }
+
+            .event::after {
+                left: -30px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Real Madrids Historia</h1>
+    </header>
+
+    <section class="summary">
+        <h2>Vad är Real Madrid?</h2>
+        <p>
+            Real Madrid Club de Fútbol är en av världens mest framstående fotbollsklubbar, grundad 1902 i Madrid, Spanien. Klubben har vunnit otaliga nationella och internationella titlar, inklusive La Liga och UEFA Champions League. Real Madrid är känd för sin stil, sin passionerade supporterbas och legendariska spelare genom tiderna.
+        </p>
+    </section>
+
+    <section class="timeline">
+        <div class="event event-left">
+            <h3>1902 – Grundandet</h3>
+            <p>Klubben grundades som Madrid Football Club och fick senare namnet Real Madrid efter kungligt beskydd.</p>
+        </div>
+
+        <div class="event event-right">
+            <h3>1950-talet – Stjärnorna anländer</h3>
+            <p>Legendariska spelare som Alfredo Di Stéfano och Francisco Gento bidrog till klubbens första europeiska framgångar.</p>
+        </div>
+
+        <div class="event event-left">
+            <h3>1998 – Champions League Triumf</h3>
+            <p>Real Madrid vinner UEFA Champions League och cementerar sin status som en av Europas största klubbar.</p>
+        </div>
+
+        <div class="event event-right">
+            <h3>2000-talet – Galácticos-eran</h3>
+            <p>Klubben köper stjärnspelare som Zinedine Zidane, Ronaldo, David Beckham och flera andra kända namn.</p>
+        </div>
+
+        <div class="event event-left">
+            <h3>2010-talet – Dominans i Europa</h3>
+            <p>Real Madrid vinner flera Champions League-titlar under ledning av tränare som José Mourinho och Zinedine Zidane.</p>
+        </div>
+    </section>
+</body>
+</html>
