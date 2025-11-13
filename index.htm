@@ -6,61 +6,77 @@
     <title>Real Madrids Historia</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f5f5f5;
-            color: #333;
+            background-color: #fdfdfd;
+            color: #222;
         }
 
         header {
-            background-color: #003366;
-            color: white;
-            padding: 20px;
+            background-color: #050505;
+            color: #FFD700;
+            padding: 25px 20px;
             text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
 
         h1 {
             margin: 0;
-            font-size: 2.5em;
+            font-size: 2.8em;
+            font-weight: bold;
+            letter-spacing: 1px;
         }
 
         .summary {
-            padding: 20px;
-            max-width: 800px;
-            margin: auto;
-            line-height: 1.6;
-            background-color: white;
-            margin-top: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            padding: 25px 20px;
+            max-width: 850px;
+            margin: 30px auto;
+            line-height: 1.7;
+            background-color: #FFFFFF;
+            border: 2px solid #FFD700;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .summary h2 {
+            color: #003366;
         }
 
         .timeline {
-            max-width: 900px;
-            margin: 40px auto;
+            max-width: 950px;
+            margin: 50px auto;
             position: relative;
         }
 
         .timeline::after {
             content: '';
             position: absolute;
-            width: 4px;
-            background-color: #003366;
+            width: 5px;
+            background-color: #FFD700;
             top: 0;
             bottom: 0;
             left: 50%;
-            margin-left: -2px;
+            margin-left: -2.5px;
         }
 
         .event {
-            padding: 20px;
+            padding: 25px;
             position: relative;
-            background-color: white;
-            border-radius: 10px;
+            background-color: #FFFFFF;
+            border-radius: 12px;
             width: 45%;
-            margin-bottom: 40px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            margin-bottom: 50px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+            border-left: 4px solid #003366;
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Gör hover smidig */
+        }
+
+        /* Hover-effekt */
+        .event:hover {
+            transform: translateY(-10px) scale(1.02); /* Lyft och förstora lite */
+            box-shadow: 0 12px 24px rgba(0,0,0,0.2); /* Starkare skugga */
+            z-index: 10; /* Se till att den hamnar ovanpå */
         }
 
         .event-left {
@@ -74,25 +90,32 @@
         .event::after {
             content: '';
             position: absolute;
-            width: 20px;
-            height: 20px;
+            width: 22px;
+            height: 22px;
             background-color: #003366;
             border-radius: 50%;
             top: 20px;
             z-index: 1;
+            border: 3px solid #FFD700;
         }
 
         .event-left::after {
-            right: -10px;
+            right: -11px;
         }
 
         .event-right::after {
-            left: -10px;
+            left: -11px;
         }
 
         .event h3 {
             margin-top: 0;
             color: #003366;
+            font-weight: bold;
+        }
+
+        .event p {
+            font-size: 1.05em;
+            line-height: 1.6;
         }
 
         @media screen and (max-width: 768px) {
@@ -127,6 +150,7 @@
         </p>
     </section>
 
+    
     <section class="timeline">
         <div class="event event-left">
             <h3>1902 – Grundandet</h3>
@@ -153,5 +177,6 @@
             <p>Real Madrid vinner flera Champions League-titlar under ledning av tränare som José Mourinho och Zinedine Zidane.</p>
         </div>
     </section>
+      
 </body>
 </html>
