@@ -3,180 +3,314 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Real Madrids Historia</title>
+    <title>Real Madrid CF</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #fdfdfd;
-            color: #222;
-        }
+        * {margin:0; padding:0; box-sizing:border-box; font-family:'Roboto', sans-serif;}
+        body {background:#f5f5f5; color:#333; scroll-behavior: smooth;}
 
         header {
-            background-color: #050505;
-            color: #FFD700;
-            padding: 25px 20px;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            background: #000 url('real_madrid_logo.png') no-repeat center 50px;
+            background-size: 150px;
+            color:#fff;
+            text-align:center;
+            padding:150px 20px 50px 20px;
         }
 
-        h1 {
-            margin: 0;
-            font-size: 2.8em;
-            font-weight: bold;
-            letter-spacing: 1px;
+        header h1 {
+            font-size:3em;
+            letter-spacing:3px;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
         }
 
-        .summary {
-            padding: 25px 20px;
-            max-width: 850px;
-            margin: 30px auto;
-            line-height: 1.7;
-            background-color: #FFFFFF;
-            border: 2px solid #FFD700;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        nav {
+            background:#fff;
+            display:flex;
+            justify-content:center;
+            gap:25px;
+            padding:15px 0;
+            position: sticky;
+            top:0;
+            z-index:1000;
+            box-shadow:0 5px 15px rgba(0,0,0,0.1);
         }
 
-        .summary h2 {
-            color: #003366;
-        }
+        nav a {text-decoration:none; color:#000; font-weight:700; transition:0.3s;}
+        nav a:hover {color:#0077cc;}
 
-        .timeline {
-            max-width: 950px;
-            margin: 50px auto;
+        section {padding:80px 20px; max-width:1200px; margin:auto;}
+
+        section h2 {
+            text-align:center;
+            font-size:2.5em;
+            margin-bottom:50px;
+            color:#0077cc;
             position: relative;
         }
 
-        .timeline::after {
-            content: '';
-            position: absolute;
-            width: 5px;
-            background-color: #FFD700;
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -2.5px;
+        section h2::after {
+            content:"";
+            display:block;
+            width:60px;
+            height:4px;
+            background:#0077cc;
+            margin:10px auto 0 auto;
+            border-radius:2px;
         }
 
-        .event {
-            padding: 25px;
-            position: relative;
-            background-color: #FFFFFF;
-            border-radius: 12px;
-            width: 45%;
-            margin-bottom: 50px;
-            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-            border-left: 4px solid #003366;
-            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Gör hover smidig */
+        /* FAKTA */
+        .facts {
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+            gap:30px;
         }
 
-        /* Hover-effekt */
-        .event:hover {
-            transform: translateY(-10px) scale(1.02); /* Lyft och förstora lite */
-            box-shadow: 0 12px 24px rgba(0,0,0,0.2); /* Starkare skugga */
-            z-index: 10; /* Se till att den hamnar ovanpå */
+        .fact-card {
+            background:#fff;
+            border-radius:20px;
+            padding:25px;
+            text-align:center;
+            box-shadow:0 10px 20px rgba(0,0,0,0.1);
+            transition:0.3s;
         }
 
-        .event-left {
-            left: 0;
+        .fact-card:hover {
+            transform: translateY(-10px);
+            box-shadow:0 15px 30px rgba(0,0,0,0.2);
         }
 
-        .event-right {
-            left: 55%;
+        .fact-card img {
+            width:60px;
+            margin-bottom:15px;
         }
 
-        .event::after {
-            content: '';
-            position: absolute;
-            width: 22px;
-            height: 22px;
-            background-color: #003366;
+        /* KORTLAYOUT */
+        .cards {
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+            gap:30px;
+        }
+
+        .card {
+            background:#fff;
+            border-radius:20px;
+            padding:25px;
+            box-shadow:0 10px 25px rgba(0,0,0,0.1);
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+            text-align:center;
+        }
+
+        /* === HOVER ANIMATIONER PÅ KORT === */
+        .card:hover {
+            transform: translateY(-12px) scale(1.03);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+        }
+
+        /* === SPELARBILDER RUNDA MED ANIMATION === */
+        .player-img {
+            width: 170px;
+            height: 170px;
             border-radius: 50%;
-            top: 20px;
-            z-index: 1;
-            border: 3px solid #FFD700;
+            object-fit: cover;
+            object-position: center top;
+            margin: auto;
+            display: block;
+            margin-bottom: 15px;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
         }
 
-        .event-left::after {
-            right: -11px;
+        .card:hover .player-img {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(0, 119, 204, 0.4);
         }
 
-        .event-right::after {
-            left: -11px;
+        /* === TEXTANIMATIONER === */
+        .card h3, .card p {
+            transition: color 0.3s ease, transform 0.3s ease;
         }
 
-        .event h3 {
-            margin-top: 0;
-            color: #003366;
-            font-weight: bold;
+        .card:hover h3 {
+            color:#0077cc;
+            transform: translateY(-3px);
         }
 
-        .event p {
-            font-size: 1.05em;
-            line-height: 1.6;
+        .card:hover p {
+            color:#444;
+            transform: translateY(-2px);
         }
 
-        @media screen and (max-width: 768px) {
-            .event {
-                width: 90%;
-                left: 0 !important;
-            }
+        .shop img {
+            max-width:200px;
+            margin-bottom:15px;
+        }
 
-            .timeline::after {
-                left: 20px;
-            }
+        /* REKORD */
+        .stats {
+            display:flex;
+            flex-wrap:wrap;
+            justify-content:center;
+            gap:30px;
+            margin-top:40px;
+        }
 
-            .event-left, .event-right {
-                left: 40px;
-            }
+        .stat {
+            background:#fff;
+            border-radius:20px;
+            padding:20px;
+            width:200px;
+            text-align:center;
+            box-shadow:0 8px 20px rgba(0,0,0,0.1);
+        }
 
-            .event::after {
-                left: -30px !important;
-            }
+        .stat h3 {
+            font-size:1.5em;
+            color:#0077cc;
+            margin-bottom:10px;
+        }
+
+        .stat p {
+            font-size:2em;
+            font-weight:700;
+        }
+
+        footer {
+            background:#000;
+            color:#fff;
+            text-align:center;
+            padding:40px 20px;
+            margin-top:50px;
         }
     </style>
 </head>
+
 <body>
+
     <header>
-        <h1>Real Madrids Historia</h1>
+        <h1>Real Madrid CF</h1>
     </header>
 
-    <section class="summary">
-        <h2>Vad är Real Madrid?</h2>
-        <p>
-            Real Madrid Club de Fútbol är en av världens mest framstående fotbollsklubbar, grundad 1902 i Madrid, Spanien. Klubben har vunnit otaliga nationella och internationella titlar, inklusive La Liga och UEFA Champions League. Real Madrid är känd för sin stil, sin passionerade supporterbas och legendariska spelare genom tiderna.
-        </p>
+    <nav>
+        <a href="#facts">Fakta</a>
+        <a href="#players">Ikoniska Spelare</a>
+        <a href="#records">Rekord</a>
+        <a href="#shop">Bernabéu Shop</a>
+    </nav>
+
+    <!-- FAKTA -->
+    <section id="facts">
+        <h2>Fakta om Real Madrid</h2>
+        <div class="facts">
+            <div class="fact-card">
+                <img src="https://img.icons8.com/ios-filled/50/0077cc/calendar.png">
+                <h3>Grundat</h3>
+                <p>1902</p>
+            </div>
+            <div class="fact-card">
+                <img src="https://img.icons8.com/ios-filled/50/0077cc/stadium.png">
+                <h3>Hemmaarena</h3>
+                <p>Santiago Bernabéu</p>
+            </div>
+            <div class="fact-card">
+                <img src="https://img.icons8.com/ios-filled/50/0077cc/domain.png">
+                <h3>Hemsida</h3>
+                <p><a href="https://www.realmadrid.com" target="_blank">realmadrid.com</a></p>
+            </div>
+            <div class="fact-card">
+                <img src="https://img.icons8.com/ios-filled/50/0077cc/paint-palette.png">
+                <h3>Färg</h3>
+                <p>Vit</p>
+            </div>
+        </div>
     </section>
 
-    
-    <section class="timeline">
-        <div class="event event-left">
-            <h3>1902 – Grundandet</h3>
-            <p>Klubben grundades som Madrid Football Club och fick senare namnet Real Madrid efter kungligt beskydd.</p>
-        </div>
+    <!-- SPELARE -->
+    <section id="players">
+        <h2>Ikoniska Spelare</h2>
+        <div class="cards">
 
-        <div class="event event-right">
-            <h3>1950-talet – Stjärnorna anländer</h3>
-            <p>Legendariska spelare som Alfredo Di Stéfano och Francisco Gento bidrog till klubbens första europeiska framgångar.</p>
-        </div>
+            <div class="card">
+                <img src="ronaldo.png" class="player-img">
+                <h3>Cristiano Ronaldo</h3>
+                <p>En av världens bästa målskyttar genom tiderna.</p>
+            </div>
 
-        <div class="event event-left">
-            <h3>1998 – Champions League Triumf</h3>
-            <p>Real Madrid vinner UEFA Champions League och cementerar sin status som en av Europas största klubbar.</p>
-        </div>
+            <div class="card">
+                <img src="zidane.png" class="player-img">
+                <h3>Zinedine Zidane</h3>
+                <p>Fransk mittfältare känd för sin elegans och teknik.</p>
+            </div>
 
-        <div class="event event-right">
-            <h3>2000-talet – Galácticos-eran</h3>
-            <p>Klubben köper stjärnspelare som Zinedine Zidane, Ronaldo, David Beckham och flera andra kända namn.</p>
-        </div>
+            <div class="card">
+                <img src="ramos.png" class="player-img">
+                <h3>Sergio Ramos</h3>
+                <p>Långvarig lagkapten och defensiv legend.</p>
+            </div>
 
-        <div class="event event-left">
-            <h3>2010-talet – Dominans i Europa</h3>
-            <p>Real Madrid vinner flera Champions League-titlar under ledning av tränare som José Mourinho och Zinedine Zidane.</p>
         </div>
     </section>
-      
+
+    <!-- REKORD -->
+    <section id="records">
+        <h2>Rekord</h2>
+        <div class="stats">
+            <div class="stat"><h3>Champions League</h3><p class="count" data-target="14">0</p></div>
+            <div class="stat"><h3>La Liga</h3><p class="count" data-target="35">0</p></div>
+            <div class="stat"><h3>Mål av Ronaldo</h3><p class="count" data-target="450">0</p></div>
+            <div class="stat"><h3>Utan förlust</h3><p class="count" data-target="28">0</p></div>
+        </div>
+    </section>
+
+    <!-- SHOP -->
+    <section id="shop">
+        <h2>Bernabéu Shop</h2>
+        <div class="cards shop">
+            <div class="card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/60/Real_Madrid_Shirt.jpg">
+                <h3>Tröjor</h3>
+                <p>Officiella matchtröjor och supportertröjor.</p>
+            </div>
+            <div class="card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Real_Madrid_Scarf.jpg">
+                <h3>Halsdukar</h3>
+                <p>Perfekt för matchdagen.</p>
+            </div>
+            <div class="card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Real_Madrid_Cap.jpg">
+                <h3>Kepsar</h3>
+                <p>Klassiska kepsar för fans.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>© 2025 Real Madrid CF</footer>
+
+    <script>
+        /* RÄKNARE ANIMATION */
+        const counters = document.querySelectorAll('.count');
+        counters.forEach(counter => {
+            counter.innerText = '0';
+            const updateCount = () => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText;
+                const increment = Math.ceil(target / 100);
+                if(count < target){
+                    counter.innerText = count + increment;
+                    setTimeout(updateCount, 20);
+                } else {
+                    counter.innerText = target;
+                }
+            }
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if(entry.isIntersecting){
+                        updateCount();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {threshold:0.5});
+            observer.observe(counter);
+        });
+    </script>
+
 </body>
 </html>
